@@ -13,14 +13,14 @@ import org.springframework.context.annotation.Configuration;
  * <p>
  * 验证码配置类
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(CaptchaProperties.class)
 public class CaptchaAutoConfiguration {
 
-	@Bean
-	@ConditionalOnWebApplication
-	public CaptchaEndpoint captchaEndpoint(CaptchaProperties properties) {
-		return new CaptchaEndpoint(properties);
-	}
+    @Bean
+    @ConditionalOnWebApplication
+    public CaptchaEndpoint captchaEndpoint(CaptchaProperties properties) {
+        return new CaptchaEndpoint(properties);
+    }
 
 }

@@ -55,7 +55,7 @@
 ### 3.1.gradle方式的引入
 ```text
 dependencies {
-    compile 'com.github.whvcse:easy-captcha:1.6.2'
+    compile 'com.pig4cloud.plugin:easy-captcha:1.6.2'
 }
 ```
 
@@ -63,7 +63,7 @@ dependencies {
 ```xml
 <dependencies>
    <dependency>
-      <groupId>com.github.whvcse</groupId>
+      <groupId>com.pig4cloud.plugin</groupId>
       <artifactId>easy-captcha</artifactId>
       <version>1.6.2</version>
    </dependency>
@@ -71,19 +71,7 @@ dependencies {
 ```
 
 ### 3.3.jar包下载
-[easy-captcha-1.6.2.jar](https://gitee.com/whvse/EasyCaptcha/releases)
-
-maven导入jar包，在项目根目录创建`libs`文件夹，然后pom.xml添加如下：
-```
-<dependency>
-  <groupId>com.github.whvcse</groupId>
-  <artifactId>easy-captcha</artifactId>
-  <version>1.6.1</version>
-  <systemPath>${basedir}/libs/easy-captcha-1.6.2.jar</systemPath>
-</dependency>
-```
-
----
+[easy-captcha](https://repo1.maven.org/maven2/com/pig4cloud/plugin/easy-captcha)
 
 ## 4.使用方法
 

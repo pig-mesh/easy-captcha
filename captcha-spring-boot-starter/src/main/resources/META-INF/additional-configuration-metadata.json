@@ -1,0 +1,11 @@
+{
+  "properties": [
+    {
+      "name": "captcha.create.path",
+      "type": "java.lang.String",
+      "description": "生成验证码请求路径",
+      "defaultValue": "/create"
+    }
+  ],
+  "hints": []
+}

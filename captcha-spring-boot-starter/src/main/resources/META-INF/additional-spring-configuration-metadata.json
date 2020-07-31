@@ -6,6 +6,5 @@
       "description": "生成验证码请求路径",
       "defaultValue": "/create"
     }
-  ],
-  "hints": []
+  ]
 }

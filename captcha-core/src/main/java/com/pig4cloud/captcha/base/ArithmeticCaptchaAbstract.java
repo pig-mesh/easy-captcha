@@ -1,7 +1,7 @@
-package com.wf.captcha.base;
+package com.pig4cloud.captcha.base;
 
-import com.wf.captcha.engine.Evaluator;
-import com.wf.captcha.engine.Symbol;
+import com.pig4cloud.captcha.engine.Evaluator;
+import com.pig4cloud.captcha.engine.Symbol;
 
 /**
  * 算术验证码抽象类 Created by 王帆 on 2019-08-23 上午 10:08.

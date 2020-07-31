@@ -1,4 +1,4 @@
-package com.wf.captcha;
+package com.pig4cloud.captcha;
 
 import org.junit.Test;
 

@@ -30,7 +30,7 @@ public enum Symbol {
 	/**
 	 * 标识符
 	 */
-	NUM('n', false), ADD('+', false), SUB('-', false), MUL('×', true), DIV('÷', true);
+	NUM('n', false), ADD('+', false), SUB('-', false), MUL('x', true), DIV('÷', true);
 
 	private final char value;
 

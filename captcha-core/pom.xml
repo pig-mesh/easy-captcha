@@ -18,6 +18,11 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.aviator</groupId>
+            <artifactId>aviator</artifactId>
+            <version>5.1.4</version>
+        </dependency>
     </dependencies>
 
 </project>

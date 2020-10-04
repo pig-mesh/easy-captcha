@@ -1,7 +1,7 @@
 package com.pig4cloud.captcha;
 
+import com.googlecode.aviator.AviatorEvaluator;
 import com.pig4cloud.captcha.base.ArithmeticCaptchaAbstract;
-import com.pig4cloud.captcha.engine.Evaluator;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -127,7 +127,7 @@ public class SimpleArithmeticCaptcha extends ArithmeticCaptchaAbstract {
 				}
 			}
 		}
-		chars = String.valueOf(Evaluator.eval(sb.toString()));
+		chars =  String.valueOf(AviatorEvaluator.execute(sb.toString()));
 
 		int parseInt = Integer.parseInt(chars);
 		if (parseInt < 0) {
@@ -145,8 +145,7 @@ public class SimpleArithmeticCaptcha extends ArithmeticCaptchaAbstract {
 				sb.append(num(0, parseInt + 1));
 			}
 		}
-
-		chars = String.valueOf(Evaluator.eval(sb.toString()));
+		chars = String.valueOf(AviatorEvaluator.execute(sb.toString()));
 		sb.append("=?");
 		setArithmeticString(sb.toString());
 		return chars.toCharArray();

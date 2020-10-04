@@ -55,7 +55,7 @@
 ### 3.1.gradle方式的引入
 ```text
 dependencies {
-    compile 'com.pig4cloud.plugin:easy-captcha:1.6.2'
+    compile 'com.pig4cloud.plugin:easy-captcha:2.2.0'
 }
 ```
 
@@ -65,7 +65,7 @@ dependencies {
    <dependency>
       <groupId>com.pig4cloud.plugin</groupId>
       <artifactId>easy-captcha</artifactId>
-      <version>1.6.2</version>
+      <version>2.2.0</version>
    </dependency>
 </dependencies>
 ```

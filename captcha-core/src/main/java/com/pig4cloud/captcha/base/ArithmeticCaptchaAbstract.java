@@ -1,6 +1,6 @@
 package com.pig4cloud.captcha.base;
 
-import com.pig4cloud.captcha.engine.Evaluator;
+import com.googlecode.aviator.AviatorEvaluator;
 import com.pig4cloud.captcha.engine.Symbol;
 
 /**
@@ -19,6 +19,7 @@ public abstract class ArithmeticCaptchaAbstract extends Captcha {
 
 	/**
 	 * 生成随机验证码
+	 *
 	 * @return 验证码字符数组
 	 */
 	@Override
@@ -30,16 +31,15 @@ public abstract class ArithmeticCaptchaAbstract extends Captcha {
 				int type = num(1, algorithmSign);
 				if (type == 1) {
 					sb.append(Symbol.ADD.getValue());
-				}
-				else if (type == 2) {
+				} else if (type == 2) {
 					sb.append(Symbol.SUB.getValue());
-				}
-				else if (type == 3) {
+				} else if (type == 3) {
 					sb.append(Symbol.MUL.getValue());
 				}
 			}
 		}
-		chars = String.valueOf(Evaluator.eval(sb.toString()));
+
+		chars = String.valueOf(AviatorEvaluator.execute(sb.toString().replace("x", "*")));
 		sb.append("=?");
 		arithmeticString = sb.toString();
 		return chars.toCharArray();
@@ -59,7 +59,9 @@ public abstract class ArithmeticCaptchaAbstract extends Captcha {
 	}
 
 	/**
-	 * algorithmSign 2 : 支持加法 algorithmSign 3 : 支持加减法 algorithmSign 4 : 支持加减乘法
+	 * algorithmSign
+	 * 2 : 支持加法 algorithmSign 3 : 支持加减法 algorithmSign 4 : 支持加减乘法
+	 *
 	 * @param algorithmSign 计算公式标示
 	 */
 	public void supportAlgorithmSign(int algorithmSign) {

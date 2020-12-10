@@ -1,9 +1,3 @@
-# EasyCaptcha
-
-![MavenCentral](https://img.shields.io/maven-central/v/com.github.whvcse/easy-captcha?style=flat-square)
-![Hex.pm](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)
-
-
 ## 1.简介
 &emsp;Java图形验证码，支持gif、中文、算术等类型，可用于Java Web、JavaSE等项目。
 
@@ -59,12 +53,13 @@ dependencies {
 }
 ```
 
-### 3.2.maven方式引入
+### 3.2.maven方式引入 
+
 ```xml
 <dependencies>
    <dependency>
       <groupId>com.pig4cloud.plugin</groupId>
-      <artifactId>easy-captcha</artifactId>
+      <artifactId>captcha-spring-boot-starter</artifactId>
       <version>2.2.0</version>
    </dependency>
 </dependencies>
@@ -87,6 +82,7 @@ public class CaptchaController {
 }
 ```
 前端html代码：
+
 ```html
 <img src="/captcha" width="130px" height="48px" />
 ```

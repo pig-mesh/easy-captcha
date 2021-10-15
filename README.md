@@ -60,7 +60,7 @@ dependencies {
    <dependency>
       <groupId>com.pig4cloud.plugin</groupId>
       <artifactId>captcha-spring-boot-starter</artifactId>
-      <version>2.2.0</version>
+      <version>2.2.1</version>
    </dependency>
 </dependencies>
 ```

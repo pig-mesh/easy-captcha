@@ -6,7 +6,7 @@
 
     <groupId>com.pig4cloud.plugin</groupId>
     <artifactId>easy-captcha</artifactId>
-    <version>2.2.1</version>
+    <version>2.2.2</version>
     <packaging>pom</packaging>
     <name>easy-captcha</name>
 

@@ -1,5 +1,6 @@
 package com.pig4cloud.captcha;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.io.FileOutputStream;
@@ -10,6 +11,7 @@ import java.nio.file.Paths;
 /**
  * 测试类 Created by 王帆 on 2018-07-27 上午 10:08.
  */
+@Slf4j
 public class CaptchaTest {
 
 	@Test
@@ -18,8 +20,8 @@ public class CaptchaTest {
 			SpecCaptcha specCaptcha = new SpecCaptcha();
 			specCaptcha.setLen(4);
 			specCaptcha.setFont(i, 32f);
-			System.out.println(specCaptcha.text());
-			specCaptcha.out(new FileOutputStream(getPath( + i + "1.png")));
+			log.info(specCaptcha.text());
+			specCaptcha.out(new FileOutputStream(getPath(+i + "1.png")));
 		}
 	}
 
@@ -29,8 +31,8 @@ public class CaptchaTest {
 			GifCaptcha gifCaptcha = new GifCaptcha();
 			gifCaptcha.setLen(5);
 			gifCaptcha.setFont(i, 32f);
-			System.out.println(gifCaptcha.text());
-			gifCaptcha.out(new FileOutputStream(getPath( + i + "2.gif")));
+			log.info(gifCaptcha.text());
+			gifCaptcha.out(new FileOutputStream(getPath(+i + "2.gif")));
 		}
 	}
 
@@ -38,8 +40,8 @@ public class CaptchaTest {
 	public void testHan() throws Exception {
 		for (int i = 0; i < 1; i++) {
 			ChineseCaptcha chineseCaptcha = new ChineseCaptcha();
-			System.out.println(chineseCaptcha.text());
-			chineseCaptcha.out(new FileOutputStream(getPath( + i + "3.png")));
+			log.info(chineseCaptcha.text());
+			chineseCaptcha.out(new FileOutputStream(getPath(+i + "3.png")));
 		}
 	}
 
@@ -47,8 +49,8 @@ public class CaptchaTest {
 	public void testGifHan() throws Exception {
 		for (int i = 0; i < 1; i++) {
 			ChineseGifCaptcha chineseGifCaptcha = new ChineseGifCaptcha();
-			System.out.println(chineseGifCaptcha.text());
-			chineseGifCaptcha.out(new FileOutputStream(getPath( + i + "4.gif")));
+			log.info(chineseGifCaptcha.text());
+			chineseGifCaptcha.out(new FileOutputStream(getPath(+i + "4.gif")));
 		}
 	}
 
@@ -60,15 +62,15 @@ public class CaptchaTest {
 			specCaptcha.supportAlgorithmSign(2);
 			specCaptcha.setDifficulty(50);
 			specCaptcha.setFont(i, 28f);
-			System.out.println(specCaptcha.getArithmeticString() + " " + specCaptcha.text());
-			specCaptcha.out(new FileOutputStream(getPath( + i + "5.png")));
+			log.info(specCaptcha.getArithmeticString() + " " + specCaptcha.text());
+			specCaptcha.out(new FileOutputStream(getPath(+i + "5.png")));
 		}
 	}
 
 	@Test
 	public void testBase64() throws Exception {
 		GifCaptcha specCaptcha = new GifCaptcha();
-		System.out.println(specCaptcha.toBase64(""));
+		log.info(specCaptcha.toBase64(""));
 	}
 
 	private static String getPath(String name) {

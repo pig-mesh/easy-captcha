@@ -2,6 +2,7 @@ package com.pig4cloud.captcha;
 
 import com.googlecode.aviator.AviatorEvaluator;
 import com.pig4cloud.captcha.base.ArithmeticCaptchaAbstract;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,6 +15,7 @@ import java.io.OutputStream;
  *
  * @author Li Haoran
  */
+@Slf4j
 public class SimpleArithmeticCaptcha extends ArithmeticCaptchaAbstract {
 
 	public SimpleArithmeticCaptcha() {
@@ -95,14 +97,14 @@ public class SimpleArithmeticCaptcha extends ArithmeticCaptchaAbstract {
 			return true;
 		}
 		catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 		finally {
 			try {
 				out.close();
 			}
 			catch (IOException e) {
-				e.printStackTrace();
+				log.error(e.getMessage(), e);
 			}
 		}
 		return false;

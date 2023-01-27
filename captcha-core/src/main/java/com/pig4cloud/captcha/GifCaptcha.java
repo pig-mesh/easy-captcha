@@ -2,6 +2,7 @@ package com.pig4cloud.captcha;
 
 import com.pig4cloud.captcha.base.Captcha;
 import com.pig4cloud.captcha.utils.GifEncoder;
+import lombok.extern.slf4j.Slf4j;
 
 import java.awt.*;
 import java.awt.geom.CubicCurve2D;
@@ -12,6 +13,7 @@ import java.io.OutputStream;
 /**
  * Gif验证码类 Created by 王帆 on 2018-07-27 上午 10:08.
  */
+@Slf4j
 public class GifCaptcha extends Captcha {
 
 	public GifCaptcha() {
@@ -67,14 +69,14 @@ public class GifCaptcha extends Captcha {
 			return true;
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 		finally {
 			try {
 				os.close();
 			}
 			catch (IOException e) {
-				e.printStackTrace();
+				log.error(e.getMessage(), e);
 			}
 		}
 		return false;

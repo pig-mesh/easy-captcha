@@ -1,6 +1,7 @@
 package com.pig4cloud.captcha;
 
 import com.pig4cloud.captcha.base.ChineseCaptchaAbstract;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -8,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 
+@Slf4j
 public class ChineseCaptcha extends ChineseCaptchaAbstract {
 
 	public ChineseCaptcha() {
@@ -79,23 +81,20 @@ public class ChineseCaptcha extends ChineseCaptchaAbstract {
 			for (int i = 0; i < strs.length; i++) {
 				g2d.setColor(color());
 				int fY = height
-						- ((height - (int) fontMetrics.getStringBounds(String.valueOf(strs[i]), g2d).getHeight()) >> 1); // 文字的纵坐标
+					- ((height - (int) fontMetrics.getStringBounds(String.valueOf(strs[i]), g2d).getHeight()) >> 1); // 文字的纵坐标
 				g2d.drawString(String.valueOf(strs[i]), i * fW + fSp + 3, fY - 3);
 			}
 			g2d.dispose();
 			ImageIO.write(bi, "png", out);
 			out.flush();
 			return true;
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		finally {
+		} catch (IOException e) {
+			log.error(e.getMessage(), e);
+		} finally {
 			try {
 				out.close();
-			}
-			catch (IOException e) {
-				e.printStackTrace();
+			} catch (IOException e) {
+				log.error(e.getMessage(), e);
 			}
 
 			if (bi != null) {

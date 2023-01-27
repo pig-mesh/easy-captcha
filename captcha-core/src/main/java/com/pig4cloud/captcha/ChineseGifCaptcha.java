@@ -2,6 +2,7 @@ package com.pig4cloud.captcha;
 
 import com.pig4cloud.captcha.base.ChineseCaptchaAbstract;
 import com.pig4cloud.captcha.utils.GifEncoder;
+import lombok.extern.slf4j.Slf4j;
 
 import java.awt.*;
 import java.awt.geom.CubicCurve2D;
@@ -9,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 
+@Slf4j
 public class ChineseGifCaptcha extends ChineseCaptchaAbstract {
 
 	public ChineseGifCaptcha() {
@@ -62,16 +64,13 @@ public class ChineseGifCaptcha extends ChineseCaptchaAbstract {
 			}
 			gifEncoder.finish();
 			return true;
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		} finally {
 			try {
 				os.close();
-			}
-			catch (IOException e) {
-				e.printStackTrace();
+			} catch (IOException e) {
+				log.error(e.getMessage(), e);
 			}
 		}
 		return false;
@@ -111,7 +110,7 @@ public class ChineseGifCaptcha extends ChineseCaptchaAbstract {
 		g2d.setStroke(new BasicStroke(1.2f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL));
 		g2d.setColor(fontColor[0]);
 		CubicCurve2D shape = new CubicCurve2D.Double(besselXY[0][0], besselXY[0][1], besselXY[1][0], besselXY[1][1],
-				besselXY[2][0], besselXY[2][1], besselXY[3][0], besselXY[3][1]);
+			besselXY[2][0], besselXY[2][1], besselXY[3][0], besselXY[3][1]);
 		g2d.draw(shape);
 		// 画验证码
 		g2d.setFont(getFont());
@@ -124,7 +123,7 @@ public class ChineseGifCaptcha extends ChineseCaptchaAbstract {
 			g2d.setComposite(ac3);
 			g2d.setColor(fontColor[i]);
 			int fY = height
-					- ((height - (int) fontMetrics.getStringBounds(String.valueOf(strs[i]), g2d).getHeight()) >> 1); // 文字的纵坐标
+				- ((height - (int) fontMetrics.getStringBounds(String.valueOf(strs[i]), g2d).getHeight()) >> 1); // 文字的纵坐标
 			g2d.drawString(String.valueOf(strs[i]), i * fW + fSp - 3, fY - 3);
 		}
 		g2d.dispose();

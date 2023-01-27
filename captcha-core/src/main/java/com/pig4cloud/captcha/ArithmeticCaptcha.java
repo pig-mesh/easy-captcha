@@ -1,6 +1,7 @@
 package com.pig4cloud.captcha;
 
 import com.pig4cloud.captcha.base.ArithmeticCaptchaAbstract;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -11,6 +12,7 @@ import java.io.OutputStream;
 /**
  * png格式验证码 Created by 王帆 on 2018-07-27 上午 10:08.
  */
+@Slf4j
 public class ArithmeticCaptcha extends ArithmeticCaptchaAbstract {
 
 	public ArithmeticCaptcha() {
@@ -88,14 +90,14 @@ public class ArithmeticCaptcha extends ArithmeticCaptchaAbstract {
 			return true;
 		}
 		catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 		finally {
 			try {
 				out.close();
 			}
 			catch (IOException e) {
-				e.printStackTrace();
+				log.error(e.getMessage(), e);
 			}
 
 			if (bi != null) {

@@ -47,9 +47,9 @@
 ## 3.导入项目
 
 ### 3.1.gradle方式的引入
-```text
+```groovy
 dependencies {
-    compile 'com.pig4cloud.plugin:easy-captcha:2.2.2'
+    implementation 'com.pig4cloud.plugin:easy-captcha:2.2.2'
 }
 ```
 
@@ -222,24 +222,44 @@ public class Test {
 ```
 
 > 注意：<br/>
-> &emsp;算术验证码的len表示是几位数运算，而其他验证码的len表示验证码的位数，算术验证码的text()表示的是公式的结果，
-> 对于算术验证码，你应该把公式的结果存储session，而不是公式。
+> &emsp;1. 算术验证码的len表示是几位数运算，而其他验证码的len表示验证码的位数，算术验证码的text()表示的是公式的结果，
+> 对于算术验证码，你应该把公式的结果存储session，而不是公式。  
+> &emsp;2. 由于部分字体库的问题，除号可能无法显示
 
 ### 5.2.验证码字符类型
 
- 类型 | 描述 
- :--- | :--- 
- TYPE_DEFAULT | 数字和字母混合 
- TYPE_ONLY_NUMBER | 纯数字
- TYPE_ONLY_CHAR | 纯字母 
- TYPE_ONLY_UPPER | 纯大写字母
- TYPE_ONLY_LOWER | 纯小写字母
- TYPE_NUM_AND_UPPER | 数字和大写字母
+#### 算数验证码
+
+| 值   | 描述   |
+|-----|------|
+| 2   | 加法   |
+| 3   | 加减   |
+| 4   | 加减乘  |
+| 5   | 加减乘除 |
 
 使用方法：
+
+```java
+    ArithmeticCaptcha arithmeticCaptcha=new ArithmeticCaptcha();
+    arithmeticCaptcha.supportAlgorithmSign(5);
 ```
-SpecCaptcha captcha = new SpecCaptcha(130, 48, 5);
-captcha.setCharType(Captcha.TYPE_ONLY_NUMBER);
+
+#### 验证码
+
+| 类型                 | 描述      |
+|--------------------|---------|
+| TYPE_DEFAULT       | 数字和字母混合 |
+| TYPE_ONLY_NUMBER   | 纯数字     |
+| TYPE_ONLY_CHAR     | 纯字母     |
+| TYPE_ONLY_UPPER    | 纯大写字母   |
+| TYPE_ONLY_LOWER    | 纯小写字母   |
+| TYPE_NUM_AND_UPPER | 数字和大写字母 |
+
+使用方法：
+
+```java
+    SpecCaptcha captcha=new SpecCaptcha(130,48,5);
+    captcha.setCharType(Captcha.TYPE_ONLY_NUMBER);
 ```
 
 > 只有`SpecCaptcha`和`GifCaptcha`设置才有效果。
@@ -247,18 +267,18 @@ captcha.setCharType(Captcha.TYPE_ONLY_NUMBER);
 ### 5.3.字体设置
 内置字体：
 
- 字体 | 效果 
- :--- | :--- 
- Captcha.FONT_1 |  ![](https://s2.ax1x.com/2019/08/23/msMe6U.png)
- Captcha.FONT_2 | ![](https://s2.ax1x.com/2019/08/23/msMAf0.png)
- Captcha.FONT_3 |  ![](https://s2.ax1x.com/2019/08/23/msMCwj.png)
- Captcha.FONT_4 | ![](https://s2.ax1x.com/2019/08/23/msM9mQ.png)
- Captcha.FONT_5 | ![](https://s2.ax1x.com/2019/08/23/msKz6S.png)
- Captcha.FONT_6 | ![](https://s2.ax1x.com/2019/08/23/msKxl8.png)
- Captcha.FONT_7 | ![](https://s2.ax1x.com/2019/08/23/msMPTs.png)
- Captcha.FONT_8 | ![](https://s2.ax1x.com/2019/08/23/msMmXF.png)
- Captcha.FONT_9 | ![](https://s2.ax1x.com/2019/08/23/msMVpV.png)
- Captcha.FONT_10 | ![](https://s2.ax1x.com/2019/08/23/msMZlT.png)
+| 字体              | 效果                                             |
+|-----------------|------------------------------------------------|
+| Captcha.FONT_1  | ![](https://s2.ax1x.com/2019/08/23/msMe6U.png) |
+| Captcha.FONT_2  | ![](https://s2.ax1x.com/2019/08/23/msMAf0.png) |
+| Captcha.FONT_3  | ![](https://s2.ax1x.com/2019/08/23/msMCwj.png) |
+| Captcha.FONT_4  | ![](https://s2.ax1x.com/2019/08/23/msM9mQ.png) |
+| Captcha.FONT_5  | ![](https://s2.ax1x.com/2019/08/23/msKz6S.png) |
+| Captcha.FONT_6  | ![](https://s2.ax1x.com/2019/08/23/msKxl8.png) |
+| Captcha.FONT_7  | ![](https://s2.ax1x.com/2019/08/23/msMPTs.png) |
+| Captcha.FONT_8  | ![](https://s2.ax1x.com/2019/08/23/msMmXF.png) |
+| Captcha.FONT_9  | ![](https://s2.ax1x.com/2019/08/23/msMVpV.png) |
+| Captcha.FONT_10 | ![](https://s2.ax1x.com/2019/08/23/msMZlT.png) |
 
 使用方法：
 ```
@@ -338,7 +358,7 @@ public class CaptchaController {
     $.post('/login', {
         verKey: verKey,
         verCode: '8u6h',
-        username: 'admin'，
+        username: 'admin',
         password: 'admin'
     }, function(res) {
         console.log(res);
@@ -358,16 +378,19 @@ public class CaptchaController {
 
 ## 8.更新日志
 
+- **2023-01-21 (v2.2.3)**
+    - 增加除法运算
+
 - **2019-08-23 (v1.6.2)**
     - 增加10种漂亮的内置字体，不依赖系统字体
-    
+
     - 增加算术验证码，运算位数可自由配置
     - 增加输出base64编码的功能
     - 增加贝塞尔曲线作为干扰线
-    
+
 - **2018-08-09 (v1.5.0)**
     - 增加纯大写字母、纯小写字母、数字和大写字母配置
-    
+
     - 增加中文验证码、中文gif验证码
     - 增加抗锯齿效果，优化文字颜色
     - 增加CaptchaUtil便于Web项目使用

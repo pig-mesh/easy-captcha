@@ -27,19 +27,46 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum Symbol {
+
 	/**
 	 * 标识符
 	 */
-	NUM('n', false), ADD('+', false), SUB('-', false), MUL('x', true), DIV('÷', true);
+	NUM("n", false),
 
-	private final char value;
+	/**
+	 * 加法
+	 */
+	ADD("+", false),
 
+	/**
+	 * 减发
+	 */
+	SUB("-", false),
+
+	/**
+	 * 乘法
+	 */
+	MUL("x", true),
+
+	/**
+	 * 除法
+	 */
+	DIV("÷", true);
+
+	/**
+	 * 算数符号
+	 */
+	private final String value;
+
+	/**
+	 * 是否优先计算
+	 */
 	private final boolean priority;
 
-	public static Symbol of(char c) {
+	public static Symbol of(String c) {
 		Symbol[] values = Symbol.values();
 		for (Symbol value : values) {
-			if (value.value == c) {
+			if (value.value.equals(c)) {
 				return value;
 			}
 		}

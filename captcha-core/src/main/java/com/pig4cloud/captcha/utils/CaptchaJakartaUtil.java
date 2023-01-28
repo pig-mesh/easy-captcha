@@ -15,24 +15,7 @@ import java.io.IOException;
  * @author FULaBUla
  * @since 2023-01-28 上午 10:08
  */
-public class CaptchaJakartaUtil {
-
-	private static final String SESSION_KEY = "captcha";
-
-	/**
-	 * 默认长度
-	 */
-	private static final int DEFAULT_LEN = 4;
-
-	/**
-	 * 默认宽度
-	 */
-	private static final int DEFAULT_WIDTH = 130;
-
-	/**
-	 * 默认高度
-	 */
-	private static final int DEFAULT_HEIGHT = 48;
+public class CaptchaJakartaUtil extends AbstractCaptchaUtil {
 
 	/**
 	 * 输出验证码

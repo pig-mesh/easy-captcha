@@ -51,6 +51,13 @@ public abstract class ArithmeticCaptchaAbstract extends Captcha {
 				arithmeticList.set(2 * (i - 1), String.valueOf(number * num((int) Math.sqrt(difficulty))));
 			}
 
+			// 如果是减法则获取一个比第一个小的数据
+			if (lastSymbol == Symbol.SUB) {
+				String firstNum = arithmeticList.get(0);
+				number = num(Integer.parseInt(firstNum) + 1);
+			}
+
+
 			arithmeticList.add(String.valueOf(number));
 
 			if (i < len - 1) {

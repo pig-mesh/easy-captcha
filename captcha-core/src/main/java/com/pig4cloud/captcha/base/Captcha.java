@@ -1,5 +1,7 @@
 package com.pig4cloud.captcha.base;
 
+import com.pig4cloud.captcha.utils.FontsUtil;
+
 import java.awt.*;
 import java.awt.geom.CubicCurve2D;
 import java.awt.geom.QuadCurve2D;
@@ -294,8 +296,7 @@ public abstract class Captcha extends Randoms {
 	}
 
 	public void setFont(int font, int style, float size) throws IOException, FontFormatException {
-		this.font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/" + FONT_NAMES[font]))
-				.deriveFont(style, size);
+		this.font = FontsUtil.getFont(FONT_NAMES[font], style, size);
 	}
 
 	public int getLen() {

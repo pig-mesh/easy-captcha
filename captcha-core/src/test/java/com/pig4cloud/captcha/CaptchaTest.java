@@ -3,6 +3,7 @@ package com.pig4cloud.captcha;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -13,7 +14,18 @@ import java.nio.file.Paths;
  */
 @Slf4j
 public class CaptchaTest {
+	private static final Integer DEFAULT_IMAGE_WIDTH = 100;
 
+	private static final Integer DEFAULT_IMAGE_HEIGHT = 40;
+	@Test
+	public void testMath() throws FileNotFoundException {
+		for (int i = 0; i < 100; i++) {
+			ArithmeticCaptcha captcha = new ArithmeticCaptcha(DEFAULT_IMAGE_WIDTH, DEFAULT_IMAGE_HEIGHT);
+			captcha.supportAlgorithmSign(3);
+			log.info(captcha.text());
+			captcha.out(new FileOutputStream(getPath(+i + "-math.png")));
+		}
+	}
 	@Test
 	public void test() throws Exception {
 		for (int i = 0; i < 1; i++) {

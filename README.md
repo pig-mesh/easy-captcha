@@ -69,6 +69,9 @@ dependencies {
 [easy-captcha](https://repo1.maven.org/maven2/com/pig4cloud/plugin/easy-captcha)
 
 ## 4.使用方法
+> 注意：<br/>
+> &emsp;1. 使用 Jakarta 时用 `CaptchaJakartaUtil`；使用 Javax 时使用 `CaptchaUtil`；  
+> &emsp;2. 使用 `CaptchaUtil` 时需要根据使用情况引入对应的 `servlet` 依赖。
 
 ### 4.1.在SpringMVC中使用
 ```java
@@ -77,34 +80,56 @@ public class CaptchaController {
     
     @RequestMapping("/captcha")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        // 使用 Jakarta 时用 CaptchaJakartaUtil
         CaptchaUtil.out(request, response);
     }
 }
 ```
+
 前端html代码：
 
 ```html
-<img src="/captcha" width="130px" height="48px" />
+<img src="/captcha" width="130px" height="48px"/>
 ```
 
 > 不要忘了把`/captcha`路径排除登录拦截，比如shiro的拦截。
 
 ### 4.2.在servlet中使用
-web.xml中配置servlet：
+
+web.xml 中配置 Javax servlet：
+
 ```xml
+
 <web-app>
     <!-- 图形验证码servlet -->
     <servlet>
         <servlet-name>CaptchaServlet</servlet-name>
-        <servlet-class>com.wf.captcha.servlet.CaptchaServlet</servlet-class>
+        <servlet-class>com.pig4cloud.captcha.servlet.CaptchaServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CaptchaServlet</servlet-name>
-        <url-pattern>/captcha</url-pattern>
+        <url-pattern>/captcha</url-pattern>
     </servlet-mapping>
 </web-app>
-
 ```
+
+web.xml 中配置 Jakarta servlet：
+
+```xml
+
+<web-app>
+    <!-- 图形验证码servlet -->
+    <servlet>
+        <servlet-name>CaptchaServlet</servlet-name>
+        <servlet-class>com.pig4cloud.captcha.servlet.CaptchaJakartaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CaptchaServlet</servlet-name>
+        <url-pattern>/captcha</url-pattern>
+    </servlet-mapping>
+</web-app>
+```
+
 前端html代码：
 ```html
 <img src="/captcha" width="130px" height="48px" />
@@ -117,7 +142,8 @@ web.xml中配置servlet：
 public class LoginController {
     
     @PostMapping("/login")
-    public JsonResult login(String username,String password,String verCode){
+    public JsonResult login(String username, String password, String verCode) {
+        // 使用 Jakarta 时用 CaptchaJakartaUtil
         if (!CaptchaUtil.ver(verCode, request)) {
             CaptchaUtil.clear(request);  // 清除session中的验证码
             return JsonResult.error("验证码不正确");
@@ -384,9 +410,13 @@ public class CaptchaController {
 
 ## 9.更新日志
 
-- **2023-01-21 (v2.2.3)**
+- **2023-01-28 (v2.2.3)**
     - 增加除法运算
     - 使用 slf4j 代替控制台打印
+    - 增加 CaptchaUtil （适用于 javax.servlet）
+    - 增加 CaptchaJakartaUtil （适用于 jakarta.servlet）
+    - 增加 CaptchaServlet （适用于 javax.servlet）
+    - 增加 CaptchaJakartaServlet （适用于 jakarta.servlet）
 
 - **2019-08-23 (v1.6.2)**
     - 增加10种漂亮的内置字体，不依赖系统字体

@@ -21,7 +21,6 @@ public class CaptchaTest {
 	public void testMath() throws FileNotFoundException {
 		for (int i = 0; i < 100; i++) {
 			ArithmeticCaptcha captcha = new ArithmeticCaptcha(DEFAULT_IMAGE_WIDTH, DEFAULT_IMAGE_HEIGHT);
-			captcha.supportAlgorithmSign(3);
 			log.info(captcha.text());
 			captcha.out(new FileOutputStream(getPath(+i + "-math.png")));
 		}

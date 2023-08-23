@@ -24,7 +24,7 @@ public abstract class ArithmeticCaptchaAbstract extends Captcha {
 	/**
 	 * 表达式复杂度
 	 */
-	protected static int algorithmSign = 5;
+	protected static int algorithmSign = 4;
 
 	public ArithmeticCaptchaAbstract() {
 		setLen(2);

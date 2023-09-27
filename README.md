@@ -49,7 +49,7 @@
 ### 3.1.gradle方式的引入
 ```groovy
 dependencies {
-    implementation 'com.pig4cloud.plugin:easy-captcha:2.2.3'
+    implementation 'io.springboot.plugin:easy-captcha:2.2.3'
 }
 ```
 
@@ -58,7 +58,7 @@ dependencies {
 ```xml
 <dependencies>
    <dependency>
-      <groupId>com.pig4cloud.plugin</groupId>
+      <groupId>io.springboot.plugin</groupId>
       <artifactId>captcha-spring-boot-starter</artifactId>
       <version>2.2.3</version>
    </dependency>

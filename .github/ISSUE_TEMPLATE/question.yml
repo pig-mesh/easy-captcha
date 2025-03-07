@@ -57,7 +57,7 @@ body:
       label: 提交前确认
       description: 提交此问题前，请确认您已完成以下事项
       options:
-        - label: 我已搜索现有问题并确认这不是重复的问题
+        - label: 我已经阅读过文档，搜索过现有的 issues，但没有找到答案
           required: true
-        - label: 我已包含回答我的问题所需的所有相关信息
+        - label: 为了项目更好的推广，请我 Star ♥️ 此项目
           required: true

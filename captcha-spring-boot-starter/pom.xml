@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.pig4cloud.plugin</groupId>
         <artifactId>easy-captcha</artifactId>
-        <version>2.2.4</version>
+        <version>2.2.5</version>
     </parent>
     <artifactId>captcha-spring-boot-starter</artifactId>
     <name>captcha-spring-boot-starter</name>
@@ -48,7 +48,7 @@
         <dependency>
             <groupId>com.pig4cloud.plugin</groupId>
             <artifactId>captcha-core</artifactId>
-            <version>2.2.4</version>
+            <version>2.2.5</version>
         </dependency>
 
     </dependencies>

@@ -1,6 +1,8 @@
 ## 1.简介
 &emsp;Java图形验证码，支持gif、中文、算术等类型，可用于Java Web、JavaSE等项目。
 
+[![Maven Central](https://img.shields.io/maven-central/v/com.pig4cloud.plugin/easy-captcha.svg?style=flat-square)](https://maven-badges.herokuapp.com/maven-central/com.pig4cloud.plugin/easy-captcha)
+
 ---
 
 ## 2.效果展示
@@ -49,7 +51,7 @@
 ### 3.1.gradle方式的引入
 ```groovy
 dependencies {
-    implementation 'com.pig4cloud.plugin:easy-captcha:2.2.4'
+    implementation 'com.pig4cloud.plugin:easy-captcha:2.2.5'
 }
 ```
 
@@ -60,7 +62,7 @@ dependencies {
    <dependency>
       <groupId>com.pig4cloud.plugin</groupId>
       <artifactId>captcha-spring-boot-starter</artifactId>
-      <version>2.2.4</version>
+      <version>2.2.5</version>
    </dependency>
 </dependencies>
 ```
@@ -402,32 +404,6 @@ public class CaptchaController {
 
 ---
 
-## 8.日志
+## 8.致谢
 
-&emsp;使用 slf4j 进行日志输出，需要根据自身使用情况搭配日志框架
-
----
-
-## 9.更新日志
-
-- **2023-01-28 (v2.2.3)**
-    - 增加除法运算
-    - 使用 slf4j 代替控制台打印
-    - 增加 CaptchaUtil （适用于 javax.servlet）
-    - 增加 CaptchaJakartaUtil （适用于 jakarta.servlet）
-    - 增加 CaptchaServlet （适用于 javax.servlet）
-    - 增加 CaptchaJakartaServlet （适用于 jakarta.servlet）
-
-- **2019-08-23 (v1.6.2)**
-    - 增加10种漂亮的内置字体，不依赖系统字体
-
-    - 增加算术验证码，运算位数可自由配置
-    - 增加输出base64编码的功能
-    - 增加贝塞尔曲线作为干扰线
-
-- **2018-08-09 (v1.5.0)**
-    - 增加纯大写字母、纯小写字母、数字和大写字母配置
-
-    - 增加中文验证码、中文gif验证码
-    - 增加抗锯齿效果，优化文字颜色
-    - 增加CaptchaUtil便于Web项目使用
+本项目 fork 源至EasyCaptcha ，  [ele-admin/EasyCaptcha](https://github.com/ele-admin/EasyCaptcha)

@@ -1,0 +1,63 @@
+name: 问题咨询
+description: 咨询关于 easy-captcha 的问题
+title: "[问题]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您花时间提出问题！请填写以下信息，以便我们更好地为您提供帮助。
+  
+  - type: textarea
+    id: question
+    attributes:
+      label: 您的问题是什么？
+      description: 请尽可能详细地描述您的问题
+      placeholder: 我想知道...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: version
+    attributes:
+      label: 版本
+      description: 您使用的是哪个版本的 easy-captcha？
+      options:
+        - 最新发布版本
+        - 开发分支
+        - 其他（请在问题描述中说明）
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: 运行环境
+      description: 您使用的是什么环境？（例如：Spring Boot 版本，Java 版本）
+      placeholder: Spring Boot 2.7.0, Java 11
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 补充信息
+      description: 在此添加关于您问题的任何其他上下文信息（截图、代码示例等）
+      placeholder: |
+        代码示例：
+        ```java
+        // 在此处填写您的代码
+        ```
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 提交前确认
+      description: 提交此问题前，请确认您已完成以下事项
+      options:
+        - label: 我已搜索现有问题并确认这不是重复的问题
+          required: true
+        - label: 我已包含回答我的问题所需的所有相关信息
+          required: true
